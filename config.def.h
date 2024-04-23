@@ -2,6 +2,8 @@
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int tabModKey = 0x40;
+static const unsigned int tabCycleKey = 0x17;
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor  X */
 static const unsigned int systrayonleft = 0;    /* 0: systray in the right corner, >0: systray on left of status text */
@@ -64,9 +66,11 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "alacritty", NULL };
 
-static const char *scrotcmd[] = { "/home/moorts/suckless/dwm/scripts/sclip.sh", NULL };
+static const char *bookscmd[] = { "/home/moorts/repos/dwm/scripts/dmenu_read", NULL };
+static const char *scrotcmd[] = { "/home/moorts/repos/dwm/scripts/sclip.sh", NULL };
+static const char *lockcmd[] = { "betterlockscreen", "-l", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -104,6 +108,10 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY          ,             XK_s,      spawn,          {.v = scrotcmd } },
+	{ MODKEY          ,             XK_r,      spawn,          {.v = bookscmd } },
+	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lockcmd } },
+	{ MODKEY,                       XK_o,      winview,        {0} },
+	{ Mod1Mask,                     XK_Tab,    alttab,         {0} },
 };
 
 /* button definitions */

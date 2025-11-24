@@ -36,6 +36,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
+	{ "Zotero",   NULL,       "Quick Format Citation",       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
@@ -68,7 +69,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
-static const char *bookscmd[] = { "/home/moorts/repos/dwm/scripts/dmenu_read", NULL };
+static const char *bookscmd[] = { "python", "/home/moorts/repos/dwm/scripts/rofi-zotero.py", NULL };
 static const char *scrotcmd[] = { "/home/moorts/repos/dwm/scripts/sclip.sh", NULL };
 static const char *lockcmd[] = { "betterlockscreen", "-l", NULL };
 

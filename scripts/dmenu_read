@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/home/moorts/repos/dwm/scripts/dmenu_pdf | dmenu "$@" | xargs -I {} zathura {} &
